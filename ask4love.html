@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="font-family:'微软雅黑'">
+    <div id="showID" style="position:absolute;left:33%;top:20%;font-size:200%">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做我的女朋友吧好不
+    </div>
+    <div id="chooseID1" name="Agree" onmousedown="agree()" style="position:absolute;top:40%;left:30%">好呀好呀！</div>
+    <div id="chooseID2" name="Disagree" onmouseover="moveButton(this)" style="display:inline;position:absolute;top:40%;left:60%">不我就不！</div>
+    <script type="text/javascript">
+      function agree() {
+        document.body.style.backgroundColor="#FFCCCC";
+        document.getElementById('chooseID1').style.display="none";
+        document.getElementById('chooseID2').style.display="none";
+        document.getElementById('showID').innerHTML="从今天起我就是你的老公啦！>3<";
+        document.getElementById('showID').style.color="#F7F5CE";
+      }
+      // function myParseInt(s) {
+      //   var ret=parseInt(s);
+      //   return (isNaN(ret)? 0: ret);
+      // }
+      function moveButton(x) {
+        x.style.left=Math.random()*80+10+"%";
+        x.style.top=Math.random()*80+10+"%";
+      }
+    </script>
+  </body>
+</html>
