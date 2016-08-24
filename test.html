@@ -1,0 +1,210 @@
+<html>
+
+	<head>
+		<title>testFloat</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			.wrap {
+				display: block;
+				width: 200px;
+				height: 200px;
+				background-color: bisque;
+				position: absolute;
+			}
+			
+			.float1 {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background-color: burlywood;
+				position: absolute;
+				top: 50%;
+				left: 8px;
+				margin-top: -20px;
+				-webkit-animation: div_updown 0.6s linear infinite alternate;
+				-o-animation: div_updown 0.6s linear infinite alternate;
+				animation: div_updown 0.6s linear infinite alternate;
+			}
+			
+			.float2 {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background-color: burlywood;
+				position: absolute;
+				top: 50%;
+				left: 56px;
+				margin-top: -20px;
+				-webkit-animation: div_updown 0.8s ease-out infinite alternate;
+				-o-animation: div_updown 0.8s ease-out infinite alternate;
+				animation: div_updown 0.8s ease-out infinite alternate;
+			}
+			
+			.float3 {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background-color: burlywood;
+				position: absolute;
+				top: 50%;
+				left: 104px;
+				margin-top: -20px;
+				-webkit-animation: div_updown 1.2s linear infinite alternate;
+				-o-animation: div_updown 1.2s linear infinite alternate;
+				animation: div_updown 1.2s linear infinite alternate;
+			}
+			
+			.float4 {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background-color: burlywood;
+				position: absolute;
+				top: 50%;
+				left: 152px;
+				margin-top: -20px;
+				-webkit-animation: div_updown 1s ease-out infinite alternate;
+				-o-animation: div_updown 1s ease-out infinite alternate;
+				animation: div_updown 1s ease-out infinite alternate;
+			}
+			
+			.wrap a {
+				display: block;
+				width: 20px;
+				height: 20px;
+				background: #000;
+				position: absolute;
+				bottom: 0;
+				left: 90px;
+			}
+			
+			@-webkit-keyframes div_updown {
+				from {
+					margin-top: -15px;
+				}
+				to {
+					margin-top: -25px;
+				}
+			}
+			
+			@-moz-keyframes div_updown {
+				from {
+					margin-top: -15px;
+				}
+				to {
+					margin-top: -25px;
+				}
+			}
+			
+			.pop_back {
+				display: none;
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: rgba(0, 0, 0, 0.3)
+				/*opacity: 0.3;
+				-moz-opacity: 0.3;
+				-webkit-opacity: 0.3;*/
+			}
+			
+			.pop_up {
+				display: block;
+				position: absolute;
+				width: 40px;
+				height: 50px;
+				background: #fff;
+				/*margin: 0 auto;*/
+				bottom: 70px;
+				left: 80px;
+			}
+			
+			.num {
+				display: none;
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: rgba(0, 0, 0, 0.3);
+			}
+			
+			.num p {
+				display: block;
+				text-align: center;
+				color: #fff;
+				/*font-size: 12px;*/
+			}
+			
+			.num .p1 {
+				display: none;
+				font-size: 12px;
+				margin-top: 90px;
+			}
+			
+			.num .p2,
+			.num .p3,
+			.num .p4,
+			.num .p5 {
+				display: none;
+				font-size: 20px;
+				margin-top: 80px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="float1"></div>
+			<div class="float2"></div>
+			<div class="float3"></div>
+			<div class="float4"></div>
+			<a href="javascript:void(0);"></a>
+		</div>
+		<div class="num">
+			<p class="p1">准备开始驱鬼</p>
+			<p class="p2">3</p>
+			<p class="p3">2</p>
+			<p class="p4">1</p>
+			<p class="p5">GO</p>
+		</div>
+		<div class="pop_back">
+			<div class="pop_up"></div>
+		</div>
+
+		<script type="text/javascript">
+			var timeId = 0
+			var timeLeft = 1;
+
+			$(document).ready(function() {
+				$(".wrap a").click(function() {
+					$(".num").fadeIn();
+					timeId = setInterval("showTime()", 1000);
+				});
+			});
+
+			function animeCountDown() {
+				$(".num .p" + timeLeft).fadeIn(200).delay(600).fadeOut(200);
+			}
+
+			function showTime() {
+				if(timeLeft >= 6) {
+					clearInterval(timeId);
+					$(".num").hide();
+					$(".pop_back").fadeIn();
+					timeLeft = 1;
+					return;
+				}
+				animeCountDown();
+				timeLeft++;
+			}
+
+			$(".pop_back").click(function() {
+				$(".pop_back").fadeOut();
+			});
+			$(".pop_up").click(function(e) {
+				e.stopPropagation();
+			});
+		</script>
+	</body>
+
+</html>
